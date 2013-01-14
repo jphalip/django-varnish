@@ -20,11 +20,11 @@ def get_readme():
     return ''
 
 # Use the docstring of the __init__ file to be the description
-DESC = " ".join(__import__('django-varnish').__doc__.splitlines()).strip()
+DESC = " ".join(__import__('varnishapp').__doc__.splitlines()).strip()
 
 setup(
     name="django-varnish",
-    version=__import__('django-varnish').get_version().replace(' ', '-'),
+    version=__import__('varnishapp').get_version().replace(' ', '-'),
     url='https://github.com/callowayproject/django-varnish',
     author='Justin Quick, Calloway Project',
     author_email='webmaster@callowayproject.com',
