@@ -1,6 +1,7 @@
 from varnish import VarnishManager
-from django.conf import settings
 from atexit import register
+from .settings import MANAGEMENT_ADDRS, SECRET
 
-manager = VarnishManager(getattr(settings, 'VARNISH_MANAGEMENT_ADDRS', ()))
+
+manager = VarnishManager(MANAGEMENT_ADDRS, SECRET)
 register(manager.close)
