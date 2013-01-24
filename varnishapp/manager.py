@@ -1,5 +1,5 @@
-from varnish import VarnishManager
 from atexit import register
+from varnish import VarnishManager
 from .settings import MANAGEMENT_ADDRS, SECRET
 
 

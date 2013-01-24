@@ -1,6 +1,5 @@
 from django.conf import settings
 
-
 DEFAULT_SETTINGS = {
     'MANAGEMENT_ADDRS': [],
     'SECRET': '',

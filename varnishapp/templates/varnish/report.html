@@ -1,12 +1,16 @@
 {% extends 'admin/change_list.html' %}
 {% load humanize %} 
+
 {% block content %}
+<form action="" method="post">
+    <input type="text" name="command"/>
+    <input type="submit" value="Run command"/>
+</form>
 
-<form><input type="text" name="command"/><input type="submit" value="Run command"/></form>
-
-<table><tr>
+<table>
+    <tr>
     {% if stats %}
-        {% for server,report in stats %}
+        {% for server, report in stats %}
             <td><h1>{{ server }}</h1>
             <blockquote>
             <h2>Client connections</h2>
