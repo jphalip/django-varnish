@@ -1,5 +1,10 @@
 {% extends 'admin/change_list.html' %}
 {% load humanize %} 
+{% load i18n %}
+
+{% block breadcrumbs %}
+    <a href="{% url admin:index %}">{% trans "Home" %}</a>
+{% endblock breadcrumbs %}
 
 {% block content %}
 <form action="" method="post">
