@@ -32,7 +32,7 @@ setup(
     long_description=get_readme(),
     packages=find_packages(),
     include_package_data=True,
-    install_requires=read_file('requirements.txt'),
+    install_requires=['python-varnish'],
     classifiers=[
         'License :: OSI Approved :: Apache Software License',
         'Framework :: Django',
