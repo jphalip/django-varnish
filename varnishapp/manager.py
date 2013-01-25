@@ -1,7 +1,7 @@
 from atexit import register
 from varnish import VarnishManager
 
-from .settings import MANAGEMENT_ADDRS, SECRET
+from .settings import MANAGEMENT_ADDRS, SECRET, THREADED
 
 
 class DjangoVarnishManager(VarnishManager):
@@ -10,6 +10,7 @@ class DjangoVarnishManager(VarnishManager):
     """
     def run(self, *commands, **kwargs):
         kwargs.setdefault('secret', SECRET)
+        kwargs.setdefault('threaded', THREADED)
         return super(DjangoVarnishManager, self).run(*commands, **kwargs)
 
 

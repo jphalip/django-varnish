@@ -4,6 +4,7 @@ DEFAULT_SETTINGS = {
     'MANAGEMENT_ADDRS': [],
     'SECRET': '',
     'WATCHED_MODELS': [],
+    'THREADED': True,
 }
 
 USER_SETTINGS = DEFAULT_SETTINGS.copy()

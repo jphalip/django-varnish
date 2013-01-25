@@ -26,22 +26,28 @@ as items of a dictionary:
 - ``WATCHED_MODELS``
 
   A list of installed models whose absolute_urls you want
-  to purge from your Varnish cache upon saving.
+  to purge from your Varnish cache upon saving. Defaults to ``[]``.
 
-  Example: ``('auth.user','profiles.profile')``
+  Example: ``['auth.user','profiles.profile']``
 
 - ``MANAGEMENT_ADDRS``
 
   A list of Varnish cache addresses (containing their management ports).
+  Defaults to ``[]``.
 
-  Example: ``('server1:6082','server2:6082')``
+  Example: ``['server1:6082','server2:6082']``
 
 - ``SECRET``
 
   A string to be used as the shared secret that is configured on
-  the Varnish servers.
+  the Varnish servers. Defaults to ``''``
 
   Example: ``'super-sekrit-password'``
+
+- ``THREADED``
+
+  A boolean to decide whether the connection to Varnish should be done
+  in a different thread. Defaults to ``True``.
 
 Complete example::
 
@@ -49,6 +55,7 @@ Complete example::
         'WATCHED_MODELS': ('auth.User', 'profiles.profile'),
         'MANAGEMENT_ADDRS': ('server1:6082','server2:6082'),
         'SECRET': 'super-sekrit-password',
+        'THREADED': False,
     }
 
 Management
