@@ -13,6 +13,10 @@ class DjangoVarnishManager(VarnishManager):
         kwargs.setdefault('threaded', THREADED)
         return super(DjangoVarnishManager, self).run(*commands, **kwargs)
 
+    def close(self):
+        self.run('close', threaded=THREADED)
+        self.servers = ()
+
 
 manager = DjangoVarnishManager(MANAGEMENT_ADDRS)
 register(manager.close)
