@@ -6,9 +6,9 @@ from .manager import manager
 from .settings import MANAGEMENT_ADDRS
 
 
-def get_stats():
-    stats = [x[0] for x in manager.run('stats')]
-    return zip(MANAGEMENT_ADDRS, stats)
+def handle_results(results):
+    results = [x[0] for x in results if x]
+    return zip(MANAGEMENT_ADDRS, results)
 
 
 def management(request):
@@ -18,22 +18,16 @@ def management(request):
         except NoReverseMatch:
             raise Http404
 
+    context = {'addrs': MANAGEMENT_ADDRS}
+
     if 'command' in request.POST:
         kwargs = dict(request.POST.items())
-        manager.run(*str(kwargs.pop('command')).split(), **kwargs)
-        return redirect(request.path)
+        command = str(kwargs.pop('command'))
+        args = command.split()
+        results = manager.run(*args, **kwargs) or []
+        context.update({
+            'command': command,
+            'results': handle_results(results),
+        })
 
-    try:
-        stats = get_stats()
-        errors = {}
-    except Exception, e:
-        stats = None
-        errors = {
-            "stats": "Error accessing the stats : %s" % str(e)
-        }
-
-    context = {
-        'stats': stats,
-        'errors': errors
-    }
-    return render(request, 'varnish/report.html', context)
+    return render(request, 'varnish/management.html', context)
