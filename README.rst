@@ -47,7 +47,7 @@ as items of a dictionary:
 - ``THREADED``
 
   A boolean to decide whether the connection to Varnish should be done
-  in a different thread. Defaults to ``True``.
+  in a different thread. Defaults to ``False``.
 
 Complete example::
 
