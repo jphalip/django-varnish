@@ -2,7 +2,7 @@ from pprint import pprint
 
 from django.core.management.base import BaseCommand
 
-from ..manager import manager
+from ...manager import manager
 
 
 class Command(BaseCommand):
