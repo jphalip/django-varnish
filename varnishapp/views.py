@@ -18,7 +18,10 @@ def management(request):
         except NoReverseMatch:
             raise Http404
 
-    context = {'addrs': MANAGEMENT_ADDRS}
+    context = {
+        'addrs': MANAGEMENT_ADDRS,
+        'help': manager.run('help')[0][0],
+    }
 
     if 'command' in request.POST:
         kwargs = dict(request.POST.items())
